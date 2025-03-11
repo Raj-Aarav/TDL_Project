@@ -2,9 +2,10 @@ import os
 from models.blip2 import ImageCaptioning
 from models.tts import TextToSpeech
 from utils.file_utils import save_text
+#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
 
 # Define paths
-IMAGE_PATH = "data/sample1.jpg"
+IMAGE_PATH = "data/crwod.jpg"
 CAPTION_PATH = "outputs/caption.txt"
 AUDIO_OUTPUT_PATH = "outputs/speech_output.wav"
 
