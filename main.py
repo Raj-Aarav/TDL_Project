@@ -2,10 +2,11 @@ import os
 from models.blip2 import ImageCaptioning
 from models.tts import TextToSpeech
 from utils.file_utils import save_text
-#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
+from models.context_expander import ContextExpander
+#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
 
 # Define paths
-IMAGE_PATH = "data/crwod.jpg"
+IMAGE_PATH = "data/eif.jpeg"
 CAPTION_PATH = "outputs/caption.txt"
 AUDIO_OUTPUT_PATH = "outputs/speech_output.wav"
 
@@ -19,10 +20,20 @@ def main():
     # Save caption to file
     save_text(caption, CAPTION_PATH)
 
-    # Step 2: Convert Caption to Speech
+    # Step 4: Caption becomes a little big like conversation
+    print("Expanding caption with AI...")
+    expander = ContextExpander()
+    expanded_caption = expander.expand_caption(caption)
+    # print(f"Expanded Caption: {expanded_caption}")
+
+    # Save expanded caption to file
+    save_text(expanded_caption, CAPTION_PATH)
+    
+
+    # Step 3: Convert Caption to Speech
     print("Converting caption to speech...")
     tts_model = TextToSpeech()
-    tts_model.generate_speech(caption, AUDIO_OUTPUT_PATH)
+    tts_model.generate_speech(expanded_caption, AUDIO_OUTPUT_PATH)
 
     print(f"Speech output saved to: {AUDIO_OUTPUT_PATH}")
 
