@@ -7,7 +7,7 @@ from models.context_expander import ContextExpander
 import subprocess
 
 # Define paths
-IMAGE_PATH = "data/mt.jpg"
+IMAGE_PATH = "data/sample1.jpg"
 CAPTION_PATH = "outputs/caption.txt"
 AUDIO_OUTPUT_PATH = "outputs/speech_output.wav"
 AUDIO_INPUT_PATH = "outputs/question.wav"
@@ -91,7 +91,8 @@ def select_language(tts_model, recognizer):
                 'fr': "Langue sélectionnée : Français. Le système parlera maintenant en français",
                 'de': "Ausgewählte Sprache: Deutsch. Das System wird jetzt auf Deutsch sprechen",
                 'ja': "選択された言語：日本語。システムは日本語で話します",
-                'ur': "منتخب زبان: اردو۔ سسٹم اب اردو میں بات کرے گا"  
+                'ur': "منتخب زبان: اردو۔ سسٹم اب اردو میں بات کرے گا",
+                'ta': "தேர்ந்தெடுக்கப்பட்ட மொழி: தமிழ். கணினி இப்போது தமிழில் பேசும்"
             }
             
             # Directly confirm in selected language
@@ -131,7 +132,8 @@ def main():
         'fr': "Appuyez sur Entrée pour poser votre question sur l'image, ou dites quitter pour sortir",
         'de': "Drücken Sie Enter, um Ihre Frage zum Bild zu stellen, oder sagen Sie beenden zum Verlassen",
         'ja': "画像について質問するにはEnterを押すか、終了するにはquitと言ってください",
-        'ur': "تصویر کے بارے میں سوال پوچھنے کے لیے Enter دبائیں، یا باہر نکلنے کے لیے quit کہیں"  
+        'ur': "تصویر کے بارے میں سوال پوچھنے کے لیے Enter دبائیں، یا باہر نکلنے کے لیے quit کہیں",
+        'ta': "படத்தைப் பற்றி கேள்வி கேட்க Enter ஐ அழுத்தவும், அல்லது வெளியேற quit என்று சொல்லவும்"
     }
 
     # Show welcome message once
@@ -157,7 +159,8 @@ def main():
             'fr': f"Réponds à cette question sur l'image: '{question}' basé sur cette description: '{caption}'. Réponds UNIQUEMENT en français. Sois bref.",
             'de': f"Beantworte diese Frage zum Bild: '{question}' basierend auf dieser Beschreibung: '{caption}'. Antworte NUR auf Deutsch. Sei kurz.",
             'ja': f"この画像についての質問: '{question}' この説明に基づいて: '{caption}'. 日本語のみで簡潔に答えてください。",
-            'ur': f"تصویر کے بارے میں یہ سوال: '{question}' اس تفصیل کی بنیاد پر: '{caption}' صرف اردو میں مختصر جواب دیں۔"
+            'ur': f"تصویر کے بارے میں یہ سوال: '{question}' اس تفصیل کی بنیاد پر: '{caption}' صرف اردو میں مختصر جواب دیں۔",
+            'ta': f"இந்த படத்தைப் பற்றிய கேள்வி: '{question}' இந்த விளக்கத்தின் அடிப்படையில்: '{caption}'. தமிழில் மட்டும் சுருக்கமாக பதிலளிக்கவும்."
         }
         
         prompt = language_prompts.get(selected_lang, language_prompts['en'])

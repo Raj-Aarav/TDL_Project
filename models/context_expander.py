@@ -35,7 +35,7 @@ class ContextExpander:
                     {"role": "user", "content": caption}
                 ],
                 temperature=0.7,
-                max_tokens=150  # Limit response length for more focused answers
+                max_tokens=200  # Limit response length for more focused answers
             )
             return response.choices[0].message.content.strip()
         except Exception as e:
