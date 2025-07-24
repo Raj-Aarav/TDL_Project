@@ -85,7 +85,9 @@
 ### Installation
 
 git clone https://github.com/your-org/SceneScribe.git
+
 cd SceneScribe
+
 pip install -r requirements.txt
 
 --- 
